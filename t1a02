@@ -4,4 +4,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script
 <script  src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 <input type=button value="Show Plotly" on click= "{this.remove ();
 let mPlotlyDiv.style.width = '300px';
-myPlotlyDiv.style.height = '200px'
+myPlotlyDiv.style.height = '200px';
+let mySocketX = [0, 1, 2];
+let mySocketY = [0, 2, 1];
+Plotly.newPlot(my PlotlyDiv, [{x: mySocketX, y: mySocketX, y: mySocketY, mode: 'lines+marker'}],
+{margin: {t:10, b:20
