@@ -1,0 +1,3 @@
+<input type=button value="Show Plotly" on click= "{this.remove ();
+let mPlotlyDiv.style.width = '300px';
+myPlotlyDiv.style.height = '200px'
