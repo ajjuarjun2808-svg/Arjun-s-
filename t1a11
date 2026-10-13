@@ -1,28 +1,62 @@
-<h2 align=center>t1a11-arrays-fred.html</h2>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>t1a11-arrays-fred.html</title>
+</head>
+<body>
+  <h2 align="center">t1a11-arrays-fred.html</h2>
 
-<a href="">Good reference  to Javascript Arrays</a><br>
+  <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank">Good reference to JavaScript Arrays</a></p>
 
-<h4> Example working Array code</h4>
+  <h4>Example working Array code</h4>
 
-Max Array Entry : <input type=number
- id="myText01" value="3"><br>
+  <label>Max Array Entry: <input type="number" id="myText01" value="3" min="0" max="10"></label><br><br>
 
-input type=button value="Example onClick" onClick={
- let myTemp = documentgetElementById('myText01').value 
-let mySum = ''
-document.getElementById('myDiv01').innerHTML = ' '
+  <button id="btnNames">Show names array</button>
+  <button id="btnNumbers">Sum numbers array</button>
+  <button id="btnPushPop">Push/Pop demo</button>
 
-myArray = new Array()
-myArray[0] = 'Fred'
-myArray[1] = 'Mary'
-myArray[2] = 'Lizzy'
+  <div id="myDiv01">...</div>
 
-for(let myLoop=0;  myLoop < myTemp; myLoop++){
- mySum  += 'Loop #: ' + myLoop + ' array entry: ' + myArray[myLoop] +'<br>'
-}
-document.getElementById(myDiv01').innerHTML = mySum
-}">
+  <br>
 
-<div id="myDiv01">...</div>
+  <script>
+    // 1) Names array: show up to the number the user enters
+    document.getElementById('btnNames').addEventListener('click', function(){
+      const myTemp = Number(document.getElementById('myText01').value) || 0;
+      let mySum = '';
+      const myArray = ['Fred', 'Mary', 'Lizzy', 'John', 'Anna'];
+      for (let i = 0; i < myTemp && i < myArray.length; i++){
+        mySum += 'Loop #: ' + i + ' array entry: ' + myArray[i] + '<br>';
+      }
+      document.getElementById('myDiv01').innerHTML = mySum || 'No entries to show';
+    });
 
-<br>
+    // 2) Numbers array: sum and average
+    document.getElementById('btnNumbers').addEventListener('click', function(){
+      const nums = [10, 20, 30, 40, 50];
+      const sum = nums.reduce((a,b) => a + b, 0);
+      const avg = (nums.length > 0) ? (sum / nums.length).toFixed(2) : 0;
+      document.getElementById('myDiv01').innerHTML =
+        'Numbers: ' + nums.join(', ') + '<br>' +
+        'Sum: ' + sum + '<br>' +
+        'Average: ' + avg;
+    });
+
+    // 3) Simple push/pop demo with numbers
+    document.getElementById('btnPushPop').addEventListener('click', function(){
+      const arr = [1, 2, 3];
+      const toPush = 4;
+      arr.push(toPush); // now [1,2,3,4]
+      const afterPush = arr.slice(); // copy for display
+      const popped = arr.pop(); // removes 4
+      document.getElementById('myDiv01').innerHTML =
+        'Started with [1,2,3]' + '<br>' +
+        'After push(' + toPush + '): ' + afterPush.join(', ') + '<br>' +
+        'Popped value: ' + popped + '<br>' +
+        'Final array: ' + arr.join(', ');
+    });
+  </script>
+</body>
+</html>
