@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>t1a06-proper-and-variables-fred.html</title>
+  <style>
+    b { color: blue; }
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    #myDiv01 { margin-top: 1rem; padding: .5rem; border: 1px solid #ddd; background:#f9f9f9; }
+    .row { margin: .25rem 0; }
+    label { display: inline-block; width: 80px; }
+  </style>
+  <script>
+    function sayHello() {
+      const myNum = 3;
+      const myString = ' Hello ';
+      const myFloat = 17.5;
+      const name = document.getElementById('name').value || 'Friend';
+      const factor = Number(document.getElementById('factor').value) || 1;
+      const myBool = document.getElementById('myBool').checked;
+
+      const product = (myNum + myFloat) * factor;
+      const myOut = document.getElementById('myDiv01');
+
+      myOut.innerHTML =
+        `<p><b>Greeting:</b> ${myString.trim()}, ${escapeHtml(name)}!</p>` +
+        `<p><b>Number:</b> ${myNum} &nbsp; <b>Float:</b> ${myFloat.toFixed(1)}</p>` +
+        `<p><b>Product ((num + float) × factor):</b> ${product}</p>` +
+        `<p><b>Boolean:</b> ${myBool}${myBool ? ' — WOW' : ''}</p>` +
+        `<p><b>Time:</b> ${new Date().toLocaleString()}</p>`;
+    }
+
+    function clearOutput() {
+      document.getElementById('myDiv01').textContent = '...';
+    }
+
+    // small helper to avoid simple HTML injection when showing the name
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function(m) {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+      });
+    }
+  </script>
+</head>
+<body>
+  <p>This is <b>bold</b> text.</p>
+
+  <div class="row">
+    <label for="name">Name:</label>
+    <input id="name" type="text" placeholder="Your name">
+  </div>
+
+  <div class="row">
+    <label for="factor">Factor:</label>
+    <input id="factor" type="number" step="0.1" value="1">
+  </div>
+
+  <div class="row">
+    <label for="myBool">Surprise:</label>
+    <input id="myBool" type="checkbox" checked> (adds "WOW" when checked)
+  </div>
+
+  <div class="row">
+    <button id="greetBtn" onclick="sayHello()">Click Me</button>
+    <button onclick="clearOutput()">Clear</button>
+  </div>
+
+  <div id="myDiv01">...</div>
+</body>
+</html>
