@@ -1,6 +1,8 @@
 <h2 align="center">t1a08-loops-by-Fred.html</h2>
 
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops" target="_blank">Good reference to Javascript Loops</a><br>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops" target="_blank">
+  Good reference to Javascript Loops
+</a><br>
 
 <h4>Example input output code</h4>
 
@@ -13,18 +15,27 @@ weird number: <input id="myWeird" type="number" value="2"><br>
 <div id="myDiv01" style="color:red">...</div>
 
 <script>
+function getNumberValue(id, fallback = 0) {
+    const value = parseInt(document.getElementById(id).value, 10);
+    return Number.isNaN(value) ? fallback : value;
+}
+
 function basicForLoopsWithDecisions() {
-    const myMax = parseInt(document.getElementById('myNum01').value) || 0;
-    const myWeird = parseInt(document.getElementById('myWeird').value) || 0;
+    const myMax = getNumberValue('myNum01', 0);
+    const myWeird = getNumberValue('myWeird', 0);
     let myTemp = '';
 
-    for (let myLoop = 0; myLoop < myMax; myLoop++) {
-        if (myLoop === myWeird) {
-            myTemp += 'Weird number found: ' + myLoop + '<br>';
-        } else if (myLoop % 2 === 0) {
-            myTemp += 'Even Number: ' + myLoop + '<br>';
-        } else {
-            myTemp += 'Odd Number: ' + myLoop + '<br>';
+    if (myMax <= 0) {
+        myTemp = 'Please enter a value greater than 0.';
+    } else {
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            if (myLoop === myWeird) {
+                myTemp += 'Weird number found: ' + myLoop + '<br>';
+            } else if (myLoop % 2 === 0) {
+                myTemp += 'Even Number: ' + myLoop + '<br>';
+            } else {
+                myTemp += 'Odd Number: ' + myLoop + '<br>';
+            }
         }
     }
 
@@ -32,14 +43,18 @@ function basicForLoopsWithDecisions() {
 }
 
 function evenNumberIdentifier() {
-    const myMax = parseInt(document.getElementById('myNum01').value) || 0;
+    const myMax = getNumberValue('myNum01', 0);
     let myTemp = '';
 
-    for (let myLoop = 0; myLoop < myMax; myLoop++) {
-        if (myLoop % 2 === 0) {
-            myTemp += 'Even Number: ' + myLoop + '<br>';
-        } else {
-            myTemp += 'Loop number: ' + myLoop + '<br>';
+    if (myMax <= 0) {
+        myTemp = 'Please enter a value greater than 0.';
+    } else {
+        for (let myLoop = 0; myLoop < myMax; myLoop++) {
+            if (myLoop % 2 === 0) {
+                myTemp += 'Even Number: ' + myLoop + '<br>';
+            } else {
+                myTemp += 'Loop number: ' + myLoop + '<br>';
+            }
         }
     }
 
