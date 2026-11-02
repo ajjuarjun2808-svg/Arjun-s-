@@ -1,37 +1,84 @@
-<h1 align cente>t1a02-threejs-fred.html</h1>
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script  src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-<input type=button value="Show Plotly" on click= "{this.remove ();
-let mPlotlyDiv.style.width = '300px';
-myPlotlyDiv.style.height = '200px';
-let mySocketX = [0, 1, 2];
-let mySocketY = [0, 2, 1];
-Plotly.newPlot(my PlotlyDiv, [{x: mySocketX, y: mySocketX, y: mySocketY, mode: 'lines+marker'}],
-{margin: {t:10, b:20, l:20, r:10}, paper_bgcolor: 'transparent',
-plot_bgcolor: 'transparent'});}" >
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>t1a02-threejs-fred</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 align="center">t1a02-threejs-fred.html</h1>
 
-<input type=button value="Show ThreeJS" onclick+:"{
-this.remove();
-letmyScene = new THREE.Scene();
-let myCamera = new THREE.Perspectivecamer (75, 1, 0.1, 1000)
-let myRenderer. setSize ( 200, 200); 
-document.body.appendChild (myRenderer.domElement);
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 
-let myPixel = new THREE.Points (
- new THREE.BufferGeometry(). setAttribute ('position', new
-THREE.Float32BufferAttribute([0. 0, 0], 3)),
- new THREE.PointsMaterial({color: 0x00f00, size: 8, sizeAttenuation: false})
-);
-myScene.add (myPixel);
-myCamera.position.z = 5;
+  <input
+    type="button"
+    value="Show Plotly"
+    onclick="
+      const plotDiv = document.createElement('div');
+      plotDiv.style.width = '300px';
+      plotDiv.style.height = '200px';
+      document.body.appendChild(plotDiv);
 
-async function myRunAnimation() {
-myPixel.position.x = (Math.random() - 0.5 * 3;
-myPixel.position.y = (Math.random() - 0.5 * 3;
-myRenderer.render(myScene, myCamera);
-await new Promise(myResolve => setTimeout(myResolve, 100));
-requestAnimationFrame(myRunAnimation);
-}
-myRunAnimation();
-}">
+      const mySocketX = [0, 1, 2];
+      const mySocketY = [0, 2, 1];
+
+      Plotly.newPlot(plotDiv, [{
+        x: mySocketX,
+        y: mySocketY,
+        mode: 'lines+marker'
+      }], {
+        margin: { t: 10, b: 20, l: 20, r: 10 },
+        paper_bgcolor: 'transparent',
+        plot_bgcolor: 'transparent'
+      });
+    "
+  >
+
+  <input
+    type="button"
+    value="Show ThreeJS"
+    onclick="
+      this.remove();
+
+      const myScene = new THREE.Scene();
+      const myCamera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+      const myRenderer = new THREE.WebGLRenderer();
+      myRenderer.setSize(200, 200);
+      document.body.appendChild(myRenderer.domElement);
+
+      const myGeometry = new THREE.BufferGeometry();
+      myGeometry.setAttribute(
+        'position',
+        new THREE.Float32BufferAttribute([0, 0, 0], 3)
+      );
+
+      const myPixel = new THREE.Points(
+        myGeometry,
+        new THREE.PointsMaterial({
+          color: 0x00ff00,
+          size: 8,
+          sizeAttenuation: false
+        })
+      );
+
+      myScene.add(myPixel);
+      myCamera.position.z = 5;
+
+      function myRunAnimation() {
+        myPixel.position.x = (Math.random() - 0.5) * 3;
+        myPixel.position.y = (Math.random() - 0.5) * 3;
+        myRenderer.render(myScene, myCamera);
+        requestAnimationFrame(myRunAnimation);
+      }
+
+      myRunAnimation();
+    "
+  >
+</body>
+</html>
