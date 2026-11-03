@@ -1,26 +1,53 @@
-<h2 align= center>T1A05- input output by Arjun.html t1a05</h2> 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T1A05 — Input and Output</title>
+</head>
+<body>
+  <main>
+    <h1>T1A05 — Input and Output by Arjun</h1>
 
-<a href="https://www.w3schools.com/jsref/prop_htmlinnerhtml.asp">Good reference to
-input putput
-Javascript innerHTML value by Fred</a>
+    <p>
+      <a href="https://www.w3schools.com/jsref/prop_htmlinnerhtml.asp">
+        JavaScript <code>innerHTML</code> reference (W3Schools)
+      </a>
+    </p>
 
-  </h4> Example input output code</h4>
-  <pre>
-    
-    myIn01 = document.getElementById('myNum01').value
-    document.getElementById('myDiv01'). innerHTML = 'Hi'
+    <h2>Example input and output code</h2>
+    <pre><code>const input = document.getElementById('myNum01').value;
+ document.getElementById('myDiv01').textContent = 'Hi';</code></pre>
 
-  </pre>
+    <h2>Working example: square a number</h2>
+    <label for="myNum01">Enter a number:</label>
+    <input id="myNum01" type="number" step="any" value="4">
+    <button id="squareButton" type="button">Square it</button>
 
-  </h4> Example working code</h4>
+    <p id="myDiv01" aria-live="polite">The result will appear here.</p>
+  </main>
 
-  <input id="myNum01" type=number value="4" ><br>
+  <script>
+    const numberInput = document.getElementById('myNum01');
+    const result = document.getElementById('myDiv01');
+    const squareButton = document.getElementById('squareButton');
 
-  <input type=button value="myEvent squares" onclick="{
-    let myIn01 = parseFloat(document.getElementById('myNum01').value)
-    let myAnswer = myIn01 * myIn01
-    document.getElementById('myDiv01').innerHTML = myIn01 + ' squared= ' + myAnswer
-  }"><br>
+    squareButton.addEventListener('click', () => {
+      if (numberInput.value.trim() === '') {
+        result.textContent = 'Please enter a number.';
+        numberInput.focus();
+        return;
+      }
 
+      const number = numberInput.valueAsNumber;
+      if (!Number.isFinite(number)) {
+        result.textContent = 'Please enter a valid number.';
+        numberInput.focus();
+        return;
+      }
 
-  <div id="myDiv01">...</div>
+      result.textContent = `${number} squared = ${number * number}`;
+    });
+  </script>
+</body>
+</html>
