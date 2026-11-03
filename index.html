@@ -1,19 +1,183 @@
-<li><a href="https://github.com/ajjuarjun2808-svg/Arjun-s-">GITHUB</a></li>
-<li><a href="T1A02-list-fred.html">T1A02-list-fred.html</a></li>
-<li><a href="T1A04-css-arjun.html">T1A04-css-arjun.html</a></li>
-<li><a href="T1A05-in-out-arjun.html">T1A05-in-out-arjun.html</a></li>
-<li><a href="t1a06-proper-and-variables-arjun.html">t1a06-proper-and-variables-arjun.html</a></li>
-<li><a href="T1A07-Decisions-Fred.html">T1A07-Decisions-Fred.html</a></li>
-<li><a href="T1A08-Loops-Fred.html">T1A08-Loops-Fred.html</a></li>
-<li><a href="T1A06-Proper-and-variables-fred.html">...</a></li>
-<li><a href="T1A11-Arrays-fred.html">T1A11-Arrays-fred.html</a></li>
-<li><a href="t1a12-objects-fred.html">t1a12-objects-fred.html</a></li>
-<li><a href="t1a14-extend-class-by-fred.html">t1a14-extend-class-by-fred.html</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
-<li><a href="..">...</a></li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <title>Arjun's Web Development Assignments</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --background: #101827;
+      --surface: #192438;
+      --surface-hover: #202f48;
+      --text: #f3f6fc;
+      --muted: #a6b3c8;
+      --accent: #76e4c2;
+      --border: rgba(195, 213, 240, 0.13);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 64px 24px;
+      background:
+        radial-gradient(ellipse at 15% 0%, rgba(87, 116, 201, 0.22), transparent 40%),
+        radial-gradient(ellipse at 100% 30%, rgba(48, 177, 150, 0.12), transparent 34%),
+        var(--background);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main { width: min(100%, 900px); margin: 0 auto; }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      letter-spacing: -0.055em;
+      line-height: 1.05;
+    }
+
+    .intro {
+      max-width: 580px;
+      margin: 18px 0 32px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    h2 { margin: 0; font-size: 1.15rem; }
+
+    .count {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .assignment-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .assignment-list a {
+      display: flex;
+      min-height: 86px;
+      align-items: center;
+      gap: 16px;
+      padding: 17px 19px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .assignment-list a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(118, 228, 194, 0.55);
+      background: var(--surface-hover);
+    }
+
+    .assignment-list a:focus-visible, .github-link:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .assignment-number {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      place-items: center;
+      border-radius: 13px;
+      background: rgba(118, 228, 194, 0.11);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .assignment-name { font-weight: 700; }
+    .assignment-topic { display: block; margin-top: 4px; color: var(--muted); font-size: 0.88rem; }
+    .arrow { margin-left: auto; color: var(--muted); font-size: 1.2rem; }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .github-link { color: var(--accent); font-weight: 700; text-decoration: none; }
+    .github-link:hover { text-decoration: underline; }
+
+    @media (max-width: 520px) {
+      body { padding: 42px 18px; }
+      footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Learning by building</p>
+      <h1>Arjun's<br>Assignment Hub</h1>
+      <p class="intro">A collection of my web development assignments. Choose an assignment below to open the project.</p>
+    </header>
+
+    <section aria-labelledby="assignments-heading">
+      <div class="top-row">
+        <h2 id="assignments-heading">My assignments</h2>
+        <span class="count">8 projects</span>
+      </div>
+      <ul class="assignment-list">
+        <li><a href="T1A02-list-fred.html"><span class="assignment-number">T1A02</span><span><span class="assignment-name">HTML Lists</span><span class="assignment-topic">Lists and page structure</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="T1A04-css-arjun.html"><span class="assignment-number">T1A04</span><span><span class="assignment-name">CSS</span><span class="assignment-topic">Styling with CSS</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="T1A05-in-out-fred.html"><span class="assignment-number">T1A05</span><span><span class="assignment-name">Input and Output</span><span class="assignment-topic">Working with user input</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="t1a06-proper-and-variables-arjun.html"><span class="assignment-number">T1A06</span><span><span class="assignment-name">Proper HTML and Variables</span><span class="assignment-topic">HTML structure and JavaScript variables</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="T1A07-Decisions-Fred.html"><span class="assignment-number">T1A07</span><span><span class="assignment-name">Decisions</span><span class="assignment-topic">Conditional logic</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="T1A08-Loops-Fred.html"><span class="assignment-number">T1A08</span><span><span class="assignment-name">Loops</span><span class="assignment-topic">Repeating actions with code</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="T1A11-Arrays-fred.html"><span class="assignment-number">T1A11</span><span><span class="assignment-name">Arrays</span><span class="assignment-topic">Storing and using collections of data</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="t1a12-objects-fred.html"><span class="assignment-number">T1A12</span><span><span class="assignment-name">Objects</span><span class="assignment-topic">Organizing data with objects</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        <li><a href="t1a14-extend-class-by-fred.html"><span class="assignment-number">T1A14</span><span><span class="assignment-name">Extend a Class</span><span class="assignment-topic">Object-oriented programming</span></span><span class="arrow" aria-hidden="true">↗</span></a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <span>More assignments will be added as I build them.</span>
+      <a class="github-link" href="https://github.com/ajjuarjun2808-svg/Arjun-s-">View this project on GitHub ↗</a>
+    </footer>
+  </main>
+</body>
+</html>
