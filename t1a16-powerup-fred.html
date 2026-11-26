@@ -1,13 +1,36 @@
-<1DOCTYPE html>
-<html lang="eg"
+<!DOCTYPE html>
+<html>
+<body>
 
-  <head>
-      <meta charset="UTF-8"
-      <title>Stateful Hero Energy Tracker</html>title>
-</head>
+  <button onclick="trainHero(); document.getElementById('myDiv01').innerHTML = myHero.name + ' | Power: ' + myHero.power + ' | ' + myHero.comment;">
+    Train Hero
+  </button>
+
+  <div id="myDiv01">Captain Code | Power: 100 | Ready for training!</div>
+
+  <script>
+    var myHero = {
+      name: "Captain Code",
+      power: 100,
+      comment: "Ready for training!"
+    };
+
+    function trainHero() {
+      myHero.power = myHero.power - 10;
+
+      if (myHero.power <= 0) {
+        alert("Power depleted! Resetting to 100.");
+        myHero.power = 100;
+        myHero.comment = "Recharged and ready again!";
+      } else if (myHero.power > 50) {
+        myHero.comment = "High power - still going strong!";
+      } else if (myHero.power > 20) {
+        myHero.comment = "Medium power - getting warmed up.";
+      } else {
+        myHero.comment = "Low power - almost out of energy!";
+      }
+    }
+  </script>
 
 </body>
-
-     <h1>Stateful Hero Energy Tracker</h1>
-
-     <h2>Captain Code</h2>
+</html>
