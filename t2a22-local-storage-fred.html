@@ -8,3 +8,42 @@
     <h2>My To Do List</h2>
     <p>Use local storage to save your tasks.</p>
     <inpt type="text" id="task" size"60">
+
+    </button>onclick="addTask()">Add Tasks</button>
+    <button> onclick="storeTasks()"Store Tasks</button>
+
+        let tasks = []:
+        function addTask() {
+            let task = document.getElementById("task").value;
+
+            if (task 1= "") {
+               tasks.push(task);
+               document.getElementById("task"). value = "";
+               showTasks ();
+            }
+        }
+
+        function showTasks() {
+            let list = document.getElementById("list");
+
+            list.innerHTML = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+                let item = document.createElement("li");
+                item.text.Context = tasks [i];
+                list.appendChild(item);
+            }
+        }
+                function storeTasks() {
+                    let savedTaks = localStorage.getItem("tasks");
+
+                    if (savedTasks != null) {
+                        tasks = JSON.parse(savedTasks);
+                        showTasks();
+                    }
+                }
+
+            </script>
+
+    </body>
+    </html>
